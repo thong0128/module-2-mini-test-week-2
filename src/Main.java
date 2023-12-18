@@ -153,10 +153,7 @@ public class Main {
                 , "010"
                 , 30
                 , "friction 3");
-        System.out.println("Total price of your book: " + totalPrice(myBooks));
-        System.out.println("There is " + countJavaBooks(myBooks) + " books with java language");
-        System.out.println("There is " + countFiction1Books(myBooks) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction(myBooks) + " fiction books with price more than 100");
+        method1Test(myBooks);
 
 //        Method 2
 
@@ -216,21 +213,17 @@ public class Main {
                 , "010"
                 , 30
                 , "friction 3");
-        System.out.println("Total price of your book: " + totalPrice1(myBooks1));
-        System.out.println("There is " + countJavaBooks1(myBooks1) + " books with java language");
-        System.out.println("There is " + countFiction1Books1(myBooks1) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction1(myBooks1) + " fiction books with price more than 100");
+        method2Test(myBooks1);
 
 //        Comparison
+
+        System.out.println("Comparing...");
 
         long startTime, endTime, elapsedTime;
 
         startTime = System.nanoTime();
 
-        System.out.println("Total price of your book: " + totalPrice(myBooks));
-        System.out.println("There is " + countJavaBooks(myBooks) + " books with java language");
-        System.out.println("There is " + countFiction1Books(myBooks) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction(myBooks) + " fiction books with price more than 100");
+        method1Test(myBooks);
 
         endTime = System.nanoTime();
         elapsedTime = endTime - startTime;
@@ -238,13 +231,24 @@ public class Main {
 
         startTime = System.nanoTime();
 
-        System.out.println("Total price of your book: " + totalPrice1(myBooks1));
-        System.out.println("There is " + countJavaBooks1(myBooks1) + " books with java language");
-        System.out.println("There is " + countFiction1Books1(myBooks1) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction1(myBooks1) + " fiction books with price more than 100");
+        method2Test(myBooks1);
 
         endTime = System.nanoTime();
         elapsedTime = endTime - startTime;
         System.out.println("Elapsed time: " + elapsedTime + " nanoseconds");
+    }
+
+    private static void method1Test(Book[][] myBooks) {
+        System.out.println("Total price of your book: " + totalPrice(myBooks));
+        System.out.println("There is " + countJavaBooks(myBooks) + " books with java language");
+        System.out.println("There is " + countFiction1Books(myBooks) + " fiction books with category 'friction 1'");
+        System.out.println("There is " + count100MoreFiction(myBooks) + " fiction books with price more than 100");
+    }
+
+    private static void method2Test(Book[] myBooks1) {
+        System.out.println("Total price of your book: " + totalPrice1(myBooks1));
+        System.out.println("There is " + countJavaBooks1(myBooks1) + " books with java language");
+        System.out.println("There is " + countFiction1Books1(myBooks1) + " fiction books with category 'friction 1'");
+        System.out.println("There is " + count100MoreFiction1(myBooks1) + " fiction books with price more than 100");
     }
 }

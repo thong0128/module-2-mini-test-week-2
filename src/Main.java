@@ -8,14 +8,14 @@ public class Main {
         }
         return totaPrice;
     }
-    public static int countJavaBooks(Book[][] arr) {
+    public static int countJavaBooks(Book[][] arr, String language) {
         int count = 0;
         for (Book[] bookType : arr){
             if (bookType instanceof ProgrammingBook[]){
                 for (Book book : bookType){
                     ProgrammingBook refBook = (ProgrammingBook)book;
-                    String language = refBook.getLanguage();
-                    if (language.equals("java")){
+                    String thisLanguage = refBook.getLanguage();
+                    if (thisLanguage.equals(language)){
                         count ++;
                     }
                 }
@@ -23,14 +23,14 @@ public class Main {
         }
         return count;
     }
-    public static int countFiction1Books(Book[][] arr) {
+    public static int countFiction1Books(Book[][] arr,String category) {
         int count = 0;
         for (Book[] bookType : arr){
             if (bookType instanceof FictionBook[]){
                 for (Book book : bookType){
                     FictionBook refBook = (FictionBook)book;
                     String language = refBook.getCategory();
-                    if (language.equals("friction 1")){
+                    if (language.equals(category)){
                         count ++;
                     }
                 }
@@ -38,14 +38,14 @@ public class Main {
         }
         return count;
     }
-    public static int count100MoreFiction(Book[][] arr) {
+    public static int countFictionMoreThanPrice(Book[][] arr, int price) {
         int count = 0;
         for (Book[] bookType : arr){
             if (bookType instanceof FictionBook[]){
                 for (Book book : bookType){
                     FictionBook refBook = (FictionBook)book;
-                    int price = refBook.getPrice();
-                    if (price>100){
+                    int thisPrice = refBook.getPrice();
+                    if (thisPrice > price){
                         count ++;
                     }
                 }
@@ -60,35 +60,35 @@ public class Main {
         }
         return totaPrice;
     }
-    public static int countJavaBooks1(Book[] arr) {
+    public static int countJavaBooks1(Book[] arr, String language) {
         int count = 0;
         for (Book book : arr){
             if (book instanceof ProgrammingBook){
                     ProgrammingBook refBook = (ProgrammingBook)book;
-                    String language = refBook.getLanguage();
-                    if (language.equals("java")) count ++;
+                    String thisLanguage = refBook.getLanguage();
+                    if (thisLanguage.equals(language)) count ++;
             }
         }
         return count;
     }
-    public static int countFiction1Books1(Book[] arr) {
+    public static int countFiction1Books1(Book[] arr, String category) {
         int count = 0;
         for (Book book : arr){
             if (book instanceof FictionBook){
                     FictionBook refBook = (FictionBook)book;
                     String language = refBook.getCategory();
-                    if (language.equals("friction 1")) count ++;
+                    if (language.equals(category)) count ++;
             }
         }
         return count;
     }
-    public static int count100MoreFiction1(Book[] arr) {
+    public static int countFictionMoreThanPrice1(Book[] arr, int price) {
         int count = 0;
         for (Book book : arr){
             if (book instanceof FictionBook){
                 FictionBook refBook = (FictionBook)book;
-                int price = refBook.getPrice();
-                if (price>100) count ++;
+                int thisPrice = refBook.getPrice();
+                if (thisPrice > price) count ++;
             }
         }
         return count;
@@ -98,57 +98,57 @@ public class Main {
 //        Method 1
 
         Book[][] myBooks = {new ProgrammingBook[5], new FictionBook[5]};
-        myBooks[0][0] = new ProgrammingBook("Head First Java"
+        Book book1 = myBooks[0][0] = new ProgrammingBook("Head First Java"
                 , "Kathy Sierra"
                 , "001"
                 , 41
                 , "java"
                 , "any");
-        myBooks[0][1]  = new ProgrammingBook("Spring in Action"
+        Book book2 = myBooks[0][1]  = new ProgrammingBook("Spring in Action"
                 , "Craig Walls and Ryan Breidenbach"
                 , "002"
                 , 39
                 , "java"
                 , "Spring");
-        myBooks[0][2] = new ProgrammingBook("Effective Java"
+        Book book3 = myBooks[0][2] = new ProgrammingBook("Effective Java"
                 , "Joshua Bloch"
                 , "003"
                 , 42
                 , "java"
                 , "any");
-        myBooks[0][3] = new ProgrammingBook("Object-Oriented Frameworks Using C++ and CORBA Gold Book"
+        Book book4 = myBooks[0][3] = new ProgrammingBook("Object-Oriented Frameworks Using C++ and CORBA Gold Book"
                 , "Vishwajit Aklecha"
                 , "004"
                 , 8
                 , "C++"
                 , "CORBA");
-        myBooks[0][4] = new ProgrammingBook("Flask Web Development"
+        Book book5 = myBooks[0][4] = new ProgrammingBook("Flask Web Development"
                 , "Miguel Grinberg"
                 , "005"
                 , 35
                 , "Python"
                 , "Flask");
-        myBooks[1][0] = new FictionBook("The Heaven & Earth Grocery Store: A Novel"
+        Book book6 = myBooks[1][0] = new FictionBook("The Heaven & Earth Grocery Store: A Novel"
                 , "James McBride"
                 , "006"
                 , 17
                 , "friction 1");
-        myBooks[1][1] = new FictionBook("Holly"
+        Book book7 = myBooks[1][1] = new FictionBook("Holly"
                 , "Stephen King"
                 , "007"
                 , 160
                 , "friction 2");
-        myBooks[1][2] = new FictionBook("A Court of Thorns and Roses"
+        Book book8 = myBooks[1][2] = new FictionBook("A Court of Thorns and Roses"
                 , "Sarah J. Maas"
                 , "008"
                 , 50
                 , "friction 2");
-        myBooks[1][3] = new FictionBook("Lessons in Chemistry: A Novel"
+        Book book9 = myBooks[1][3] = new FictionBook("Lessons in Chemistry: A Novel"
                 , "Bonnie Garmus"
                 , "009"
                 , 200
                 , "friction 1");
-        myBooks[1][4] = new FictionBook("The Covenant of Water (Oprah's Book Club)"
+        Book book10 = myBooks[1][4] = new FictionBook("The Covenant of Water (Oprah's Book Club)"
                 , "Abraham Verghese"
                 , "010"
                 , 30
@@ -240,15 +240,15 @@ public class Main {
 
     private static void method1Test(Book[][] myBooks) {
         System.out.println("Total price of your book: " + totalPrice(myBooks));
-        System.out.println("There is " + countJavaBooks(myBooks) + " books with java language");
-        System.out.println("There is " + countFiction1Books(myBooks) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction(myBooks) + " fiction books with price more than 100");
+        System.out.println("There is " + countJavaBooks(myBooks, "java") + " books with java language");
+        System.out.println("There is " + countFiction1Books(myBooks, "friction 1") + " fiction books with category 'friction 1'");
+        System.out.println("There is " + countFictionMoreThanPrice(myBooks, 100) + " fiction books with price more than 100");
     }
 
     private static void method2Test(Book[] myBooks1) {
         System.out.println("Total price of your book: " + totalPrice1(myBooks1));
-        System.out.println("There is " + countJavaBooks1(myBooks1) + " books with java language");
-        System.out.println("There is " + countFiction1Books1(myBooks1) + " fiction books with category 'friction 1'");
-        System.out.println("There is " + count100MoreFiction1(myBooks1) + " fiction books with price more than 100");
+        System.out.println("There is " + countJavaBooks1(myBooks1, "java") + " books with java language");
+        System.out.println("There is " + countFiction1Books1(myBooks1, "friction 1") + " fiction books with category 'friction 1'");
+        System.out.println("There is " + countFictionMoreThanPrice1(myBooks1, 100) + " fiction books with price more than 100");
     }
 }
